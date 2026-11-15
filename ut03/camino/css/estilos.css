@@ -1,0 +1,46 @@
+body { font-family: Arial, sans-serif; margin: 0; color: #222; line-height: 1.5; }
+img, video { max-width: 100%; height: auto; }
+
+/* Enlace para saltar al contenido */
+.saltar { position: absolute; left: -9999px; top: 0; background: #fff; color: #1e3a8a; padding: 8px 16px; font-weight: bold; z-index: 10; }
+.saltar:focus { left: 8px; top: 8px; }
+
+/* Cabecera y menú */
+.cabecera { background: #1e3a8a; color: #fff; padding: 16px; }
+.sitio { margin: 0; font-size: 24px; font-weight: bold; color: #FAD228; }
+.menu { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
+.menu a { color: #fff; }
+.menu a[aria-current="page"] { font-weight: bold; text-decoration: none; border-bottom: 2px solid #FAD228; }
+
+/* Contenido */
+main { padding: 16px; max-width: 900px; }
+h1 { font-size: 30px; margin: 0 0 8px; color: #1e3a8a; }
+h2 { font-size: 24px; margin-top: 32px; color: #1e3a8a; }
+article img { display: block; width: 600px; margin-bottom: 8px; }
+
+/* Tabla de etapas */
+table { border-collapse: collapse; width: 100%; }
+caption { text-align: left; font-weight: bold; padding-bottom: 6px; }
+th, td { border: 1px solid #555; padding: 6px 10px; text-align: left; }
+thead th { background: #1e3a8a; color: #fff; }
+tbody th { background: #e8edf8; text-align: center; }
+tfoot th, tfoot td { background: #FAD228; font-weight: bold; }
+
+/* Vídeo */
+figure { margin: 0; }
+figcaption { font-size: 14px; margin-top: 4px; }
+
+/* Aside y formulario */
+.lateral { background: #fdf3c4; padding: 12px 16px; margin: 24px 16px; max-width: 868px; }
+.lateral h2 { margin-top: 0; }
+.lateral label { display: block; margin-bottom: 4px; font-weight: bold; }
+.lateral input { padding: 6px; }
+.boton { background: #1e3a8a; color: #fff; border: none; padding: 8px 16px; cursor: pointer; font-size: 16px; }
+
+/* Foco siempre visible */
+:focus-visible { outline: 3px solid #b45309; outline-offset: 2px; }
+.cabecera :focus-visible, .pie :focus-visible { outline-color: #FAD228; }
+
+/* Pie */
+.pie { background: #1e3a8a; padding: 12px 16px; font-size: 14px; }
+.pie p { color: #fff; margin: 0; }

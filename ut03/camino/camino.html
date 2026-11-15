@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Camino Francés desde Pedrafita do Cebreiro · Portafolio de Oliver
+    </title>
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="cabecera">
+      <p class="sitio">Mis rutas</p>
+      <nav aria-label="Menú principal">
+        <ul class="menu">
+          <li><a href="../../index.html">Portafolio</a></li>
+          <li><a href="../alquiler/alquiler.html">Alquiler BiciRuta</a></li>
+          <li>
+            <a href="camino.html" aria-current="page">Camino de Santiago</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <h1>Camino Francés: de Pedrafita do Cebreiro a Santiago</h1>
+      <p>
+        Este año hice a pie el último tramo del Camino Francés, desde Pedrafita
+        do Cebreiro hasta Santiago de Compostela. Son unos 158 km repartidos en
+        7 etapas, casi todos por caminos de tierra entre aldeas, bosques y
+        prados de Galicia.
+      </p>
+
+      <section>
+        <h2>Etapas</h2>
+        <table>
+          <caption>
+            Etapas del Camino Francés desde Pedrafita do Cebreiro (distancias y
+            tiempos aproximados)
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Etapa</th>
+              <th scope="col">Tramo</th>
+              <th scope="col">Distancia</th>
+              <th scope="col">Tiempo a pie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Pedrafita do Cebreiro – O Cebreiro – Triacastela</td>
+              <td>25 km</td>
+              <td>6 h</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Triacastela – Sarria (por Samos)</td>
+              <td>18 km</td>
+              <td>4 h 30 min</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Sarria – Portomarín</td>
+              <td>22 km</td>
+              <td>5 h 30 min</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Portomarín – Palas de Rei</td>
+              <td>25 km</td>
+              <td>6 h</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Palas de Rei – Arzúa</td>
+              <td>29 km</td>
+              <td>7 h</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Arzúa – O Pedrouzo</td>
+              <td>19 km</td>
+              <td>4 h 30 min</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>O Pedrouzo – Santiago de Compostela</td>
+              <td>20 km</td>
+              <td>4 h 30 min</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" colspan="2">Total</th>
+              <td>158 km</td>
+              <td>38 h</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <section>
+        <h2>El recorrido en vídeo</h2>
+        <figure>
+          <video
+            controls
+            preload="metadata"
+            width="640"
+            height="360"
+            poster="img/camino_poster.jpg"
+          >
+            <source src="media/camino.mp4" type="video/mp4" />
+            <track
+              kind="captions"
+              src="media/camino.es.vtt"
+              srclang="es"
+              label="Español"
+              default
+            />
+            <p>
+              Tu navegador no puede reproducir el vídeo. Puedes
+              <a href="media/camino.mp4">descargar el vídeo del recorrido</a>.
+            </p>
+          </video>
+          <figcaption>
+            Vídeo de 12 segundos con las etapas del Camino desde Pedrafita hasta
+            Santiago.
+          </figcaption>
+        </figure>
+      </section>
+
+      <article>
+        <h2>Mi experiencia</h2>
+        <img
+          src="img/camino-400.jpg"
+          srcset="
+            img/camino-400.jpg   400w,
+            img/camino-800.jpg   800w,
+            img/camino-1200.jpg 1200w
+          "
+          sizes="(min-width: 700px) 600px, 100vw"
+          width="400"
+          height="300"
+          loading="lazy"
+          alt="Camino de tierra entre montes verdes con un mojón que tiene la concha y la flecha amarilla del Camino"
+        />
+        <p>
+          La primera etapa es la más dura por la bajada desde O Cebreiro, pero
+          las vistas merecen la pena. A partir de Sarria se nota que hay mucha
+          más gente, porque es donde empieza la mayoría para hacer los 100 km
+          mínimos y conseguir la Compostela.
+        </p>
+        <p>
+          La etapa más larga es la de Palas de Rei a Arzúa, aunque se lleva bien
+          si se sale temprano. Llegar a la plaza del Obradoiro después de una
+          semana andando es lo mejor de todo el Camino.
+        </p>
+      </article>
+    </main>
+
+    <aside class="lateral">
+      <h2>Consejos y novedades</h2>
+      <p>
+        Lleva calzado ya usado, sella la credencial al menos dos veces al día en
+        los últimos 100 km y madruga en verano para evitar el calor.
+      </p>
+      <form
+        action="#"
+        onsubmit="
+          alert('¡Gracias! Te avisaré cuando suba nuevas rutas.');
+          return false;
+        "
+      >
+        <label for="correo">Correo electrónico para recibir nuevas rutas</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          placeholder="nombre@ejemplo.com"
+          autocomplete="email"
+          required
+        />
+        <button type="submit" class="boton">Avisarme</button>
+      </form>
+    </aside>
+
+    <footer class="pie">
+      <p>
+        Oliver Planas-Carbajo Sandu · CFGS ASIR · Lenguajes de Marcas ·
+        Actualizado el <time datetime="2026-11-15">15/11/2026</time>
+      </p>
+    </footer>
+  </body>
+</html>
