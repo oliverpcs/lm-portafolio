@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Inventario de los equipos de red del aula de ASIR 1.
+     Las direcciones MAC son ficticias (administradas localmente, empiezan por 02). -->
+<inventario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="../inventario.xsd"
+            aula="Aula 2.05 · ASIR 1" red="192.168.10.0/24" actualizado="2026-11-23">
+
+  <equipo id="EQ-01" tipo="router">
+    <nombre>Router de salida a Internet</nombre>
+    <marca>MikroTik</marca>
+    <modelo>hEX RB750Gr3</modelo>
+    <ip>192.168.10.1</ip>
+    <mac>02:1A:2B:00:00:01</mac>
+    <ubicacion rack="R1">Armario de red</ubicacion>
+    <fechaCompra>2022-09-05</fechaCompra>
+    <estado>operativo</estado>
+  </equipo>
+
+  <equipo id="EQ-02" tipo="switch">
+    <nombre>Switch principal</nombre>
+    <marca>TP-Link</marca>
+    <modelo>TL-SG3428</modelo>
+    <ip>192.168.10.2</ip>
+    <mac>02:1A:2B:00:00:02</mac>
+    <ubicacion rack="R1">Armario de red</ubicacion>
+    <fechaCompra>2022-09-05</fechaCompra>
+    <estado>operativo</estado>
+    <puertos>24</puertos>
+  </equipo>
+
+  <equipo id="EQ-03" tipo="punto-acceso">
+    <nombre>Punto de acceso wifi</nombre>
+    <marca>Ubiquiti</marca>
+    <modelo>UniFi U6 Lite</modelo>
+    <ip>192.168.10.3</ip>
+    <mac>02-1A-2B-00-00-03</mac>
+    <ubicacion>Techo, centro del aula</ubicacion>
+    <fechaCompra>2024-02-12</fechaCompra>
+    <estado>operativo</estado>
+  </equipo>
+
+  <equipo id="EQ-04" tipo="servidor">
+    <nombre>Servidor de prácticas (Proxmox)</nombre>
+    <marca>Dell</marca>
+    <modelo>PowerEdge T150</modelo>
+    <ip>192.168.10.10</ip>
+    <mac>02:1A:2B:00:00:10</mac>
+    <ubicacion rack="R1">Armario de red</ubicacion>
+    <fechaCompra>2023-10-20</fechaCompra>
+    <estado>operativo</estado>
+  </equipo>
+
+  <equipo id="EQ-05" tipo="servidor">
+    <nombre>Servidor de ficheros y copias (NAS)</nombre>
+    <marca>Synology</marca>
+    <modelo>DS224+</modelo>
+    <ip>192.168.10.11</ip>
+    <mac>02:1A:2B:00:00:11</mac>
+    <ubicacion rack="R1">Armario de red</ubicacion>
+    <fechaCompra>2024-01-15</fechaCompra>
+    <estado>operativo</estado>
+  </equipo>
+
+  <equipo id="EQ-06" tipo="impresora">
+    <nombre>Impresora del aula</nombre>
+    <marca>Brother</marca>
+    <modelo>HL-L2445DW</modelo>
+    <ip>192.168.10.20</ip>
+    <mac>02:1A:2B:00:00:20</mac>
+    <ubicacion>Mesa del profesor</ubicacion>
+    <fechaCompra>2021-03-08</fechaCompra>
+    <estado>averiado</estado>
+  </equipo>
+
+</inventario>

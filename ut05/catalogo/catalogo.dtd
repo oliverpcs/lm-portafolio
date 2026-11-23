@@ -1,0 +1,40 @@
+<!-- ==========================================================
+     catalogo.dtd · Gramática del catálogo de BiciRuta S.L.
+     Se enlaza desde catalogo.xml con:
+     <!DOCTYPE catalogo SYSTEM "catalogo.dtd">
+     ========================================================== -->
+
+<!-- El catálogo tiene uno o más productos (+) -->
+<!ELEMENT catalogo (producto+)>
+<!ATTLIST catalogo
+  tienda      CDATA  #REQUIRED
+  actualizado CDATA  #REQUIRED>
+
+<!-- Orden fijo con comas: nombre, precio y stock obligatorios;
+     descripción y características opcionales (?) -->
+<!ELEMENT producto (nombre, precio, stock, descripcion?, caracteristicas?)>
+<!ATTLIST producto
+  ref       ID                                #REQUIRED
+  categoria (bicicleta | accesorio | recambio) #REQUIRED
+  proveedor CDATA                             #IMPLIED>
+<!-- ref:       tipo ID, obligatoria y única en todo el documento
+     categoria: enumeración, solo admite esos tres valores
+     proveedor: texto libre y opcional (#IMPLIED) -->
+
+<!ELEMENT nombre      (#PCDATA)>
+<!ELEMENT stock       (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+
+<!-- moneda: EUR o USD; si no se indica, el analizador pone EUR -->
+<!ELEMENT precio (#PCDATA)>
+<!ATTLIST precio
+  moneda (EUR | USD) "EUR">
+
+<!-- Las dos características son opcionales y van en este orden -->
+<!ELEMENT caracteristicas (talla?, peso?)>
+<!ELEMENT talla (#PCDATA)>
+
+<!-- El peso siempre está en kg: #FIXED no admite otro valor -->
+<!ELEMENT peso (#PCDATA)>
+<!ATTLIST peso
+  unidad CDATA #FIXED "kg">

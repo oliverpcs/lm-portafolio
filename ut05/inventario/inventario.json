@@ -1,0 +1,96 @@
+{
+  "aula": "Aula 2.05 · ASIR 1",
+  "red": "192.168.10.0/24",
+  "actualizado": "2026-11-23",
+  "equipos": [
+    {
+      "id": "EQ-01",
+      "tipo": "router",
+      "nombre": "Router de salida a Internet",
+      "marca": "MikroTik",
+      "modelo": "hEX RB750Gr3",
+      "ip": "192.168.10.1",
+      "mac": "02:1A:2B:00:00:01",
+      "ubicacion": {
+        "lugar": "Armario de red",
+        "rack": "R1"
+      },
+      "fechaCompra": "2022-09-05",
+      "estado": "operativo"
+    },
+    {
+      "id": "EQ-02",
+      "tipo": "switch",
+      "nombre": "Switch principal",
+      "marca": "TP-Link",
+      "modelo": "TL-SG3428",
+      "ip": "192.168.10.2",
+      "mac": "02:1A:2B:00:00:02",
+      "ubicacion": {
+        "lugar": "Armario de red",
+        "rack": "R1"
+      },
+      "fechaCompra": "2022-09-05",
+      "estado": "operativo",
+      "puertos": 24
+    },
+    {
+      "id": "EQ-03",
+      "tipo": "punto-acceso",
+      "nombre": "Punto de acceso wifi",
+      "marca": "Ubiquiti",
+      "modelo": "UniFi U6 Lite",
+      "ip": "192.168.10.3",
+      "mac": "02:1A:2B:00:00:03",
+      "ubicacion": {
+        "lugar": "Techo, centro del aula"
+      },
+      "fechaCompra": "2024-02-12",
+      "estado": "operativo"
+    },
+    {
+      "id": "EQ-04",
+      "tipo": "servidor",
+      "nombre": "Servidor de prácticas (Proxmox)",
+      "marca": "Dell",
+      "modelo": "PowerEdge T150",
+      "ip": "192.168.10.10",
+      "mac": "02:1A:2B:00:00:10",
+      "ubicacion": {
+        "lugar": "Armario de red",
+        "rack": "R1"
+      },
+      "fechaCompra": "2023-10-20",
+      "estado": "operativo"
+    },
+    {
+      "id": "EQ-05",
+      "tipo": "servidor",
+      "nombre": "Servidor de ficheros y copias (NAS)",
+      "marca": "Synology",
+      "modelo": "DS224+",
+      "ip": "192.168.10.11",
+      "mac": "02:1A:2B:00:00:11",
+      "ubicacion": {
+        "lugar": "Armario de red",
+        "rack": "R1"
+      },
+      "fechaCompra": "2024-01-15",
+      "estado": "operativo"
+    },
+    {
+      "id": "EQ-06",
+      "tipo": "impresora",
+      "nombre": "Impresora del aula",
+      "marca": "Brother",
+      "modelo": "HL-L2445DW",
+      "ip": "192.168.10.20",
+      "mac": "02:1A:2B:00:00:20",
+      "ubicacion": {
+        "lugar": "Mesa del profesor"
+      },
+      "fechaCompra": "2021-03-08",
+      "estado": "averiado"
+    }
+  ]
+}
