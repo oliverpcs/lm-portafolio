@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pide cita en el taller · BiciRuta</title>
+  <link rel="stylesheet" href="css/cita.css">
+  <!-- defer: el script se descarga en paralelo y se ejecuta cuando el HTML ya está cargado -->
+  <script src="js/cita.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <img src="img/logo_biciruta.png" alt="BiciRuta" width="320" height="80">
+
+    <!-- Buscador: GET, porque solo consulta datos y la URL con la búsqueda se puede guardar o compartir -->
+    <form class="buscador" role="search" action="receptor.html" method="get">
+      <label for="q" class="solo-lector">Buscar en la tienda</label>
+      <input type="search" id="q" name="q" placeholder="Buscar en la tienda">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+
+  <main>
+    <h1>Pide cita en el taller</h1>
+    <p class="intro">Los campos marcados con <span class="obligatorio">*</span> son obligatorios.</p>
+
+    <!-- Cita: POST, porque lleva datos personales y una contraseña que no deben quedar en la URL,
+         y multipart/form-data porque incluye un fichero (la foto) -->
+    <form action="https://httpbin.org/post" method="post" enctype="multipart/form-data">
+
+      <!-- 1. Datos personales -->
+      <fieldset>
+        <legend>Tus datos</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos <span class="obligatorio">*</span></label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name"
+                 required minlength="3" maxlength="80">
+        </div>
+
+        <div class="campo">
+          <label for="dni">DNI <span class="obligatorio">*</span></label>
+          <input type="text" id="dni" name="dni" aria-describedby="ayuda-dni"
+                 required pattern="[0-9]{8}[A-Za-z]"
+                 title="8 cifras y una letra, por ejemplo 12345678Z">
+          <small id="ayuda-dni" class="ayuda">8 cifras y una letra, por ejemplo 12345678Z.</small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico <span class="obligatorio">*</span></label>
+          <input type="email" id="correo" name="correo" autocomplete="email" required>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono móvil <span class="obligatorio">*</span></label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" aria-describedby="ayuda-telefono"
+                 required pattern="[67][0-9]{8}"
+                 title="9 cifras empezando por 6 o 7, por ejemplo 612345678">
+          <small id="ayuda-telefono" class="ayuda">9 cifras, empezando por 6 o 7.</small>
+        </div>
+      </fieldset>
+
+      <!-- 2. La cita y la bicicleta -->
+      <fieldset>
+        <legend>Tu cita y tu bicicleta</legend>
+
+        <div class="campo">
+          <label for="fecha">Fecha de la cita <span class="obligatorio">*</span></label>
+          <input type="date" id="fecha" name="fecha" aria-describedby="ayuda-fecha" required>
+          <small id="ayuda-fecha" class="ayuda">A partir de mañana. El taller cierra los domingos.</small>
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Tipo de bicicleta <span class="obligatorio">*</span></label>
+          <select id="tipo" name="tipo" required>
+            <option value="">— Elige una opción —</option>
+            <option value="urbana">Urbana</option>
+            <option value="montana">Montaña</option>
+            <option value="electrica">Eléctrica</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="km">Km desde la última revisión</label>
+          <input type="number" id="km" name="km" aria-describedby="ayuda-km"
+                 min="0" max="50000" step="100">
+          <small id="ayuda-km" class="ayuda">Entre 0 y 50 000, de 100 en 100.</small>
+        </div>
+
+        <!-- Los tres radios comparten name: solo se puede elegir uno -->
+        <fieldset class="grupo">
+          <legend>Servicio <span class="obligatorio">*</span></legend>
+          <div class="opcion">
+            <input type="radio" id="servicio-basica" name="servicio" value="basica" required>
+            <label for="servicio-basica">Revisión básica</label>
+          </div>
+          <div class="opcion">
+            <input type="radio" id="servicio-completa" name="servicio" value="completa">
+            <label for="servicio-completa">Revisión completa</label>
+          </div>
+          <div class="opcion">
+            <input type="radio" id="servicio-reparacion" name="servicio" value="reparacion">
+            <label for="servicio-reparacion">Reparación</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend>Extras (opcionales)</legend>
+          <div class="opcion">
+            <input type="checkbox" id="extra-lavado" name="extras" value="lavado">
+            <label for="extra-lavado">Lavado (6 €)</label>
+          </div>
+          <div class="opcion">
+            <input type="checkbox" id="extra-recogida" name="extras" value="recogida">
+            <label for="extra-recogida">Recogida a domicilio</label>
+          </div>
+        </fieldset>
+      </fieldset>
+
+      <!-- 3. La avería -->
+      <fieldset>
+        <legend>La avería</legend>
+
+        <div class="campo campo-ancho">
+          <label for="averia">Describe la avería <span class="obligatorio">*</span></label>
+          <textarea id="averia" name="averia" rows="5" aria-describedby="ayuda-averia"
+                    required minlength="20" maxlength="500"></textarea>
+          <small id="ayuda-averia" class="ayuda">Entre 20 y 500 caracteres.</small>
+          <small id="contador" class="ayuda contador">0 / 500 caracteres</small>
+        </div>
+
+        <div class="campo campo-ancho">
+          <label for="foto">Foto de la avería</label>
+          <input type="file" id="foto" name="foto" accept=".jpg,.jpeg,.png,image/jpeg,image/png" aria-describedby="ayuda-foto">
+          <small id="ayuda-foto" class="ayuda">Opcional. Solo JPG o PNG.</small>
+        </div>
+      </fieldset>
+
+      <!-- 4. Cuenta opcional: el fieldset empieza deshabilitado y cita.js lo habilita -->
+      <div class="opcion">
+        <input type="checkbox" id="crear-cuenta" name="crear_cuenta" value="si">
+        <label for="crear-cuenta">Quiero crear una cuenta para seguir la reparación</label>
+      </div>
+
+      <fieldset id="cuenta" disabled>
+        <legend>Tu cuenta</legend>
+
+        <div class="campo">
+          <label for="clave">Contraseña</label>
+          <input type="password" id="clave" name="clave" autocomplete="new-password" aria-describedby="ayuda-clave"
+                 required pattern="(?=.*[A-Za-z])(?=.*[0-9]).{8,}"
+                 title="Mínimo 8 caracteres, con al menos una letra y un número">
+          <small id="ayuda-clave" class="ayuda">Mínimo 8 caracteres, con letras y números.</small>
+        </div>
+
+        <div class="campo">
+          <label for="clave2">Repite la contraseña</label>
+          <input type="password" id="clave2" name="clave2" autocomplete="new-password" required>
+        </div>
+      </fieldset>
+
+      <!-- 5. Privacidad -->
+      <div class="opcion privacidad">
+        <input type="checkbox" id="privacidad" name="privacidad" value="acepto" required>
+        <label for="privacidad">He leído y acepto la política de privacidad <span class="obligatorio">*</span></label>
+      </div>
+
+      <button type="submit">Pedir cita</button>
+    </form>
+  </main>
+
+  <footer class="pie">
+    <p>BiciRuta S.L. · Taller de bicicletas</p>
+  </footer>
+</body>
+</html>
