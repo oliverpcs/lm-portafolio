@@ -14,6 +14,7 @@ const clave       = document.getElementById('clave');
 const clave2      = document.getElementById('clave2');
 const averia      = document.getElementById('averia');
 const contador    = document.getElementById('contador');
+const dni         = document.getElementById('dni');
 
 
 // ---------------------------------------------------------
@@ -89,3 +90,26 @@ function actualizarContador() {
 }
 averia.addEventListener('input', actualizarContador);
 actualizarContador();   // por si el navegador ha restaurado texto al volver atrás
+
+
+// ---------------------------------------------------------
+// Ampliación · Letra del DNI
+// ---------------------------------------------------------
+// El pattern solo comprueba la forma (8 cifras y una letra). La letra
+// correcta sale de un cálculo: el resto de dividir el número entre 23
+// indica la posición de la letra en esta tabla.
+const LETRAS_DNI = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+function comprobarLetraDNI() {
+  dni.setCustomValidity('');                        // limpiar el error anterior
+  const valor = dni.value.trim().toUpperCase();     // la minúscula también vale
+  if (!/^[0-9]{8}[A-Z]$/.test(valor)) return;      // si el formato está mal, ya avisa el pattern
+
+  const numero = Number(valor.slice(0, 8));         // "12345678Z" -> 12345678
+  const letraCorrecta = LETRAS_DNI[numero % 23];    // 12345678 % 23 = 14 -> "Z"
+
+  if (valor[8] !== letraCorrecta) {
+    dni.setCustomValidity('La letra del DNI no corresponde a ese número.');
+  }
+}
+dni.addEventListener('input', comprobarLetraDNI);

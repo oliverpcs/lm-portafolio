@@ -159,6 +159,13 @@
         </div>
       </fieldset>
 
+      <!-- Ampliación · Campo trampa (honeypot): las personas no lo ven ni llegan a él con el tabulador.
+           Un bot que rellena todos los campos lo rellenará también; si llega con texto, el servidor descarta el envío. -->
+      <div class="trampa" aria-hidden="true">
+        <label for="web">No rellenes este campo</label>
+        <input type="text" id="web" name="web" tabindex="-1" autocomplete="off">
+      </div>
+
       <!-- 5. Privacidad -->
       <div class="opcion privacidad">
         <input type="checkbox" id="privacidad" name="privacidad" value="acepto" required>
