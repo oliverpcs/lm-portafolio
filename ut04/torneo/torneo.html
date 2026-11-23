@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción · Copa ASIR de e-sports 2026</title>
+  <link rel="stylesheet" href="css/torneo.css">
+  <script src="js/torneo.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <p class="marca">COPA <span>ASIR</span> 2026</p>
+    <p class="lema">Torneo de e-sports del centro · 15 de enero de 2027</p>
+  </header>
+
+  <main>
+    <h1>Inscripción en el torneo</h1>
+    <p class="intro">Los campos marcados con <span class="obligatorio">*</span> son obligatorios.
+      Para participar hay que tener al menos 16 años.</p>
+
+    <!--
+      Método POST: la inscripción incluye datos personales (nombre, NIA, correo,
+      fecha de nacimiento) que no deben quedar en la URL, el historial ni los
+      registros del servidor. Además crea un registro nuevo en el servidor, así
+      que no debe repetirse al recargar la página ni poder compartirse como enlace.
+      GET solo sería adecuado para una consulta, como buscar un equipo.
+    -->
+    <form action="https://httpbin.org/post" method="post">
+
+      <!-- 1. Datos del jugador -->
+      <fieldset>
+        <legend>Datos del jugador</legend>
+
+        <div class="campo">
+          <label for="nombre">Nombre y apellidos <span class="obligatorio">*</span></label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name"
+                 required minlength="3" maxlength="80">
+        </div>
+
+        <div class="campo">
+          <label for="nia">NIA <span class="obligatorio">*</span></label>
+          <input type="text" id="nia" name="nia" inputmode="numeric" aria-describedby="ayuda-nia"
+                 required pattern="[0-9]{8}"
+                 title="El NIA son 8 cifras, por ejemplo 10234567">
+          <small id="ayuda-nia" class="ayuda">Número de identificación del alumnado: 8 cifras.</small>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo del centro <span class="obligatorio">*</span></label>
+          <input type="email" id="correo" name="correo" autocomplete="email" aria-describedby="ayuda-correo"
+                 required pattern="[^@\s]+@alu\.ejemplo\.edu"
+                 title="Usa tu correo del centro, que termina en @alu.ejemplo.edu">
+          <small id="ayuda-correo" class="ayuda">Debe terminar en @alu.ejemplo.edu</small>
+        </div>
+
+        <div class="campo">
+          <label for="nacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
+          <input type="date" id="nacimiento" name="nacimiento" aria-describedby="ayuda-nacimiento"
+                 required min="1950-01-01">
+          <small id="ayuda-nacimiento" class="ayuda">Edad mínima: 16 años el día del torneo.</small>
+        </div>
+      </fieldset>
+
+      <!-- 2. Perfil de juego -->
+      <fieldset>
+        <legend>Perfil de juego</legend>
+
+        <div class="campo">
+          <label for="nick">Nick <span class="obligatorio">*</span></label>
+          <input type="text" id="nick" name="nick" aria-describedby="ayuda-nick"
+                 required pattern="[A-Za-z0-9_]{3,16}"
+                 title="De 3 a 16 caracteres: letras sin tildes, números o guion bajo">
+          <small id="ayuda-nick" class="ayuda">3 a 16 caracteres: letras, números y _ (sin espacios).</small>
+        </div>
+
+        <div class="campo">
+          <label for="juego">Juego <span class="obligatorio">*</span></label>
+          <select id="juego" name="juego" required>
+            <option value="">— Elige un juego —</option>
+            <option value="rocket-league">Rocket League</option>
+            <option value="valorant">Valorant</option>
+            <option value="lol">League of Legends</option>
+            <option value="ea-fc">EA Sports FC</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="nivel">Nivel de experiencia: <output id="valor-nivel" for="nivel">5</output> / 10</label>
+          <input type="range" id="nivel" name="nivel" min="1" max="10" step="1" value="5">
+        </div>
+
+        <div class="campo">
+          <label for="horas">Horas de juego a la semana</label>
+          <input type="number" id="horas" name="horas" min="0" max="60" step="1" aria-describedby="ayuda-horas">
+          <small id="ayuda-horas" class="ayuda">Entre 0 y 60.</small>
+        </div>
+
+        <fieldset class="grupo">
+          <legend>Plataformas en las que juegas</legend>
+          <div class="opcion">
+            <input type="checkbox" id="plat-pc" name="plataformas" value="pc">
+            <label for="plat-pc">PC</label>
+          </div>
+          <div class="opcion">
+            <input type="checkbox" id="plat-ps" name="plataformas" value="playstation">
+            <label for="plat-ps">PlayStation</label>
+          </div>
+          <div class="opcion">
+            <input type="checkbox" id="plat-xbox" name="plataformas" value="xbox">
+            <label for="plat-xbox">Xbox</label>
+          </div>
+          <div class="opcion">
+            <input type="checkbox" id="plat-switch" name="plataformas" value="switch">
+            <label for="plat-switch">Nintendo Switch</label>
+          </div>
+        </fieldset>
+      </fieldset>
+
+      <!-- 3. Modalidad -->
+      <fieldset>
+        <legend>Modalidad</legend>
+
+        <fieldset class="grupo">
+          <legend>¿Cómo participas? <span class="obligatorio">*</span></legend>
+          <div class="opcion">
+            <input type="radio" id="mod-individual" name="modalidad" value="individual" required>
+            <label for="mod-individual">Individual</label>
+          </div>
+          <div class="opcion">
+            <input type="radio" id="mod-equipo" name="modalidad" value="equipo">
+            <label for="mod-equipo">Con equipo</label>
+          </div>
+        </fieldset>
+
+        <!-- Solo se activa si se elige «Con equipo» (torneo.js) -->
+        <fieldset id="datos-equipo" class="grupo" disabled>
+          <legend>Datos del equipo</legend>
+          <div class="campo">
+            <label for="equipo">Nombre del equipo</label>
+            <input type="text" id="equipo" name="equipo" required minlength="3" maxlength="30">
+          </div>
+          <div class="campo">
+            <label for="jugadores">Número de jugadores</label>
+            <input type="number" id="jugadores" name="jugadores" required min="2" max="5" step="1"
+                   aria-describedby="ayuda-jugadores">
+            <small id="ayuda-jugadores" class="ayuda">Entre 2 y 5, contándote a ti.</small>
+          </div>
+          <div class="campo">
+            <label for="color">Color del equipo</label>
+            <input type="color" id="color" name="color" value="#7c3aed">
+          </div>
+        </fieldset>
+      </fieldset>
+
+      <!-- 4. Comentarios y normas -->
+      <fieldset>
+        <legend>Para terminar</legend>
+
+        <div class="campo campo-ancho">
+          <label for="comentarios">Comentarios</label>
+          <textarea id="comentarios" name="comentarios" rows="3" maxlength="300"
+                    aria-describedby="ayuda-comentarios"></textarea>
+          <small id="ayuda-comentarios" class="ayuda">Opcional. Máximo 300 caracteres.</small>
+        </div>
+
+        <div class="opcion campo-ancho">
+          <input type="checkbox" id="normas" name="normas" value="acepto" required>
+          <label for="normas">Acepto las normas del torneo y el código de conducta <span class="obligatorio">*</span></label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Inscribirme</button>
+    </form>
+  </main>
+
+  <footer class="pie">
+    <p>Copa ASIR 2026 · Organiza el departamento de Informática</p>
+  </footer>
+</body>
+</html>

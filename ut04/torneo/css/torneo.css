@@ -1,0 +1,104 @@
+/* ===== Base: tema oscuro ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #e6e6f0;
+  background: #0f1020;
+}
+
+/* ===== Cabecera y pie ===== */
+.cabecera {
+  background: linear-gradient(90deg, #2a1259, #0f1020);
+  border-bottom: 3px solid #22d3ee;
+  padding: 18px 24px;
+}
+.marca { margin: 0; font-size: 1.6rem; font-weight: 800; letter-spacing: 2px; }
+.marca span { color: #22d3ee; }
+.lema { margin: 4px 0 0; color: #c4b5fd; }
+
+.pie { text-align: center; padding: 16px; color: #a1a1b5; border-top: 1px solid #2d2e4a; margin-top: 32px; }
+
+/* ===== Contenido ===== */
+main { max-width: 820px; margin: 0 auto; padding: 24px 16px; }
+h1 { margin-bottom: 4px; }
+.intro { margin-top: 0; color: #c9c9da; }
+.obligatorio { color: #f472b6; font-weight: bold; }
+
+/* ===== Grupos ===== */
+fieldset {
+  border: 1px solid #3b3c63;
+  border-radius: 10px;
+  background: #181a33;
+  padding: 16px 20px 20px;
+  margin: 0 0 20px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+legend { font-weight: bold; font-size: 1.1rem; color: #22d3ee; padding: 0 6px; }
+
+fieldset.grupo { border: none; background: transparent; padding: 0; margin: 0; display: block; }
+fieldset.grupo > legend { font-size: 1rem; color: #e6e6f0; padding: 0; margin-bottom: 4px; }
+#datos-equipo { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+fieldset:disabled { opacity: 0.45; }
+
+/* ===== Campos ===== */
+.campo { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.campo-ancho { grid-column: 1 / -1; }
+label { font-weight: 600; }
+
+input, select, textarea, button { font: inherit; }
+
+input[type="text"], input[type="email"], input[type="date"],
+input[type="number"], select, textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #555783;
+  border-radius: 6px;
+  background: #0f1020;
+  color: #e6e6f0;
+  color-scheme: dark;   /* calendario y flechas en oscuro */
+}
+input[type="range"] { accent-color: #22d3ee; }
+input[type="color"] { width: 64px; height: 40px; padding: 2px; border: 1px solid #555783; border-radius: 6px; background: #0f1020; }
+output { color: #22d3ee; font-weight: bold; }
+textarea { resize: vertical; }
+
+.ayuda { color: #a1a1b5; font-size: 0.875rem; }
+
+.opcion { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.opcion label { font-weight: normal; }
+.opcion input { width: 1.1rem; height: 1.1rem; accent-color: #22d3ee; flex-shrink: 0; }
+
+/* ===== Validación: solo después de interactuar ===== */
+input:user-invalid, select:user-invalid, textarea:user-invalid {
+  border: 2px solid #f472b6;
+  background: #2a1225;
+}
+input:user-valid, select:user-valid, textarea:user-valid { border: 2px solid #34d399; }
+input[type="radio"]:user-invalid + label,
+input[type="checkbox"]:user-invalid + label { color: #f472b6; }
+
+/* ===== Botón ===== */
+button {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+button:hover { background: #6d28d9; }
+
+:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
+
+/* ===== Móvil ===== */
+@media (max-width: 640px) {
+  fieldset, #datos-equipo { grid-template-columns: 1fr; padding: 12px 14px 16px; }
+}
