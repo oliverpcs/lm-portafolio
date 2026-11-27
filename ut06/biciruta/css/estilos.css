@@ -1,0 +1,231 @@
+/* =========================================================
+   estilos.css · BiciRuta · Práctica 06 (UT 6)
+   Oliver Planas-Carbajo Sandu
+   ========================================================= */
+
+/* ---------- 0. Paleta (contrastes medidos en la Tarea 3.1) ---------- */
+:root {
+  --verde: #152a1d; /* marca · fondo de cabecera y pie */
+  --naranja: #e6945a; /* marca · solo fondos, bordes y texto sobre verde (6,34:1) */
+  --crema: #f4ead8; /* marca · texto sobre verde (12,75:1) y fondos */
+  --crema-claro: #fbf6ec; /* fondo de las tarjetas pares */
+  --naranja-oscuro: #a4501a; /* precios en oferta sobre blanco (5,61:1) */
+  --texto: #222222; /* texto normal sobre blanco (15,91:1) */
+  --gris: #595959; /* texto secundario sobre blanco (7:1), sustituye al #999 */
+}
+
+/* ---------- 1. Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Poppins",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--texto);
+  background-color: #ffffff;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  color: var(--verde);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--verde);
+}
+
+/* ---------- 2. Cabecera y menú ---------- */
+.cabecera {
+  background-color: var(--verde);
+  padding: 1rem 1.5rem;
+}
+
+.menu {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--crema);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* S1 · Enlaces externos con flecha · (0,1,2) */
+a[href^="http"]::after {
+  content: " ↗";
+}
+
+/* S2 · Enlace de la página actual en naranja · (0,2,1)
+   Gana a ".menu a" (0,1,1). Naranja sobre verde: 6,34:1 */
+.menu a[aria-current="page"] {
+  color: var(--naranja);
+  font-weight: 700;
+}
+
+/* S3 · Solo los li hijos directos del menú, en línea · (0,1,1) */
+.menu > li {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+/* ---------- 3. Contenido principal ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.portada {
+  padding-bottom: 1.5rem;
+}
+
+/* S4 · Párrafo justo después del h1, más grande · (0,0,2) */
+h1 + p {
+  font-size: 1.25rem;
+}
+
+/* ---------- 4. Botones ---------- */
+.boton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--verde);
+  color: var(--crema);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+/* S8 · Al pasar el ratón y con foco de teclado · (0,2,0) */
+.boton:hover {
+  background-color: var(--naranja);
+  color: var(--verde);
+}
+
+.boton:focus-visible {
+  outline: 3px solid var(--naranja-oscuro);
+  outline-offset: 3px;
+}
+
+/* ---------- 5. Tarjetas de producto ---------- */
+.producto {
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  margin: 0 1rem 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid #d9d2c3;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+}
+
+.producto h3 {
+  margin: 0.75rem 0 0.25rem;
+}
+
+.descripcion {
+  color: var(--gris);
+}
+
+.precio {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+/* Precio en oferta: naranja oscuro (5,61:1 sobre blanco) · (0,2,0) */
+.oferta .precio {
+  color: var(--naranja-oscuro);
+}
+
+/* S5 · Tarjetas pares con fondo crema claro · (0,2,0) */
+.producto:nth-of-type(even) {
+  background-color: var(--crema-claro);
+}
+
+/* S6 · Tarjetas en oferta: borde naranja y etiqueta · (0,2,0) y (0,2,1) */
+.producto.oferta {
+  border: 2px solid var(--naranja);
+}
+
+.producto.oferta::before {
+  content: "OFERTA";
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--naranja);
+  color: var(--verde);
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.25rem;
+}
+
+/* S7 · Precio antiguo tachado, más pequeño y gris · (0,1,1) */
+.precio del {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--gris);
+}
+
+/* ---------- 6. Aviso y pie ---------- */
+.aviso {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background-color: var(--crema);
+  border-left: 0.5rem solid var(--naranja);
+  border-radius: 0.5rem;
+}
+
+.pie {
+  padding: 1.5rem;
+  background-color: var(--verde);
+  color: var(--crema);
+  text-align: center;
+}
+
+.pie p {
+  margin: 0;
+}
+
+.pie a {
+  color: var(--crema);
+}

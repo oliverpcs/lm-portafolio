@@ -1,0 +1,292 @@
+/* =========================================================
+   estilos.css · Camino Francés desde Pedrafita do Cebreiro
+   Ejercicio de la UT 6 · Oliver Planas-Carbajo Sandu
+   ========================================================= */
+
+/* ---------- 0. Paleta y contrastes medidos (WebAIM) ----------
+   Texto #222222 sobre blanco ............ 15,91:1  AA ✔
+   Azul #1E3A8A sobre blanco ............. 10,36:1  AA ✔ (títulos y enlaces)
+   Blanco sobre azul #1E3A8A ............. 10,36:1  AA ✔ (cabecera, pie, botón)
+   Amarillo #FAD228 sobre azul #1E3A8A ...  7,06:1  AA ✔ (nombre del sitio)
+   Texto #222222 sobre amarillo #FAD228 .. 10,84:1  AA ✔ (fila Total)
+   Texto #222222 sobre crema #FDF3C4 ..... 14,24:1  AA ✔ (aside)
+   Azul #1E3A8A sobre azul claro #E8EDF8 .  8,83:1  AA ✔ (filas pares)
+   Naranja #B45309 sobre blanco ..........  5,02:1  (contorno del foco, mínimo 3:1)
+   ------------------------------------------------------------ */
+:root {
+  --azul: #1e3a8a;
+  --amarillo: #fad228;
+  --crema: #fdf3c4;
+  --azul-claro: #e8edf8;
+  --texto: #222222;
+  --foco: #b45309;
+}
+
+/* ---------- 1. Base · selectores de etiqueta ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--texto);
+  background-color: #ffffff;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
+  color: var(--azul);
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--azul);
+}
+
+/* ---------- 2. Demostración de especificidad ----------
+   Las dos reglas siguientes compiten por el color de los h2 de <main>.
+   #contenido h2 ... (1,0,1) → id + etiqueta
+   h2 .............. (0,0,1) → solo etiqueta
+   La regla "h2" va DESPUÉS, pero pierde dentro de <main> porque
+   #contenido h2 es más específica: los h2 de main salen en azul.
+   El h2 del <aside> está fuera de #contenido, así que solo le llega
+   la regla "h2" y sale en #222222. */
+#contenido h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.25rem;
+  font-size: 1.75rem;
+  color: var(--azul);
+  border-bottom: 3px solid var(--amarillo);
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--texto);
+}
+
+/* ---------- 3. Enlace para saltar al contenido · pseudoclase ---------- */
+.saltar {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: var(--azul);
+  font-weight: 700;
+}
+
+.saltar:focus {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+/* ---------- 4. Cabecera y menú · clase, combinador hijo, atributo ---------- */
+.cabecera {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--azul);
+  color: #ffffff;
+  text-align: center;
+}
+
+.sitio {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--amarillo);
+}
+
+.menu {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Combinador hijo (>) · solo los li directos del menú · (0,1,1) */
+.menu > li {
+  display: inline-block;
+  margin: 0 0.75rem;
+}
+
+.menu a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Pseudoclase :hover · (0,2,1) */
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* Atributo · enlace de la página actual · (0,2,1) */
+.menu a[aria-current="page"] {
+  font-weight: 700;
+  border-bottom: 2px solid var(--amarillo);
+}
+
+/* ---------- 5. Contenido · id y modelo de caja ---------- */
+/* Contenido centrado con ancho máximo */
+main,
+.lateral {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+/* Selector de id · (1,0,0) */
+#contenido {
+  padding: 2rem 1.5rem;
+}
+
+/* Combinador hermano adyacente (+) · entradilla tras el h1 · (0,0,2) */
+h1 + p {
+  font-size: 1.125rem;
+}
+
+/* Combinador descendiente · (0,0,2) */
+article img {
+  width: 100%;
+  max-width: 37.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* ---------- 6. Tabla de etapas ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+caption {
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #c9d1e6;
+  text-align: left;
+}
+
+thead th {
+  background-color: var(--azul);
+  color: #ffffff;
+}
+
+tbody th {
+  text-align: center;
+}
+
+/* Pseudoclase estructural · filas pares · (0,1,2) */
+tbody tr:nth-child(even) {
+  background-color: var(--azul-claro);
+}
+
+tfoot th,
+tfoot td {
+  background-color: var(--amarillo);
+  font-weight: 700;
+}
+
+/* ---------- 7. Vídeo ---------- */
+figure {
+  margin: 0;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* ---------- 8. Aside y formulario ---------- */
+.lateral {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--crema);
+  border-left: 0.5rem solid var(--amarillo);
+  border-radius: 0.5rem;
+}
+
+.lateral h2 {
+  margin-top: 0;
+}
+
+.lateral label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+/* Atributo · solo el campo de correo · (0,1,1) */
+input[type="email"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #6b7280;
+  border-radius: 0.25rem;
+}
+
+.boton {
+  padding: 0.5rem 1rem;
+  background-color: var(--azul);
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: var(--amarillo);
+  color: var(--texto);
+}
+
+/* ---------- 9. Foco siempre visible ---------- */
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
+}
+
+.cabecera :focus-visible,
+.pie :focus-visible {
+  outline-color: var(--amarillo);
+}
+
+/* ---------- 10. Pie ---------- */
+.pie {
+  padding: 1rem 1.5rem;
+  background-color: var(--azul);
+  color: #ffffff;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.pie p {
+  margin: 0;
+}
